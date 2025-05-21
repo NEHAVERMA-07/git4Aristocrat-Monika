@@ -244,7 +244,11 @@ git branch -D feature-branch
 Step 8: Push Changes to Remote Repository
 git remote add origin https://github.com/monicag-gupta/Prj1.git
 git push -u origin main
-
+If github has main branch already having files, it will deny the pushing of same branch.
+Then, either push a different branch
+git push -u origin develop
+or push by force:
+git push --force origin main
 
 Step 9: Create and Track a Remote Branch
 git checkout -b dev-branch
