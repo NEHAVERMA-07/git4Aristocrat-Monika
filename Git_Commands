@@ -209,6 +209,64 @@ git pull origin <branch-name>
 
 
 
+Example: Git branch commands
+
+
+Scenario: Working with Git Branches
+Imagine you are working on a project and want to add a new feature without affecting the main branch. You will create a branch, make changes, merge it, and then clean up unused branches.
+Step 1: Initialize a Git Repository
+git init my-project
+cd my-project
+This creates a new Git repository in the my-project folder.
+Step 2: Create and Switch to a New Branch
+git checkout -b feature-branch
+This creates a new branch called feature-branch and switches to it.
+Step 3: Make Changes and Commit
+Create a new file:
+echo "Hello, World!" > hello.txt
+Add the file to staging:
+git add hello.txt
+Commit the changes:
+git commit -m "Added hello.txt file"
+
+Step 4: View Available Branches
+git branch
+This shows the list of local branches. The active branch will have a * next to it.
+Step 5: Switch Back to Main Branch
+git checkout main
+Step 6: Merge the Feature Branch into Main
+git merge feature-branch
+This merges feature-branch into main.
+Step 7: Delete the Feature Branch (Optional)
+git branch -d feature-branch
+If the branch is not yet merged, you can force delete it:
+git branch -D feature-branch
+Step 8: Push Changes to Remote Repository
+git remote add origin https://github.com/monicag-gupta/Prj1.git
+git push -u origin main
+
+
+Step 9: Create and Track a Remote Branch
+git checkout -b dev-branch
+git push -u origin dev-branch
+This creates dev-branch locally and pushes it to the remote repository.
+Step 10: Delete a Remote Branch
+git push origin --delete dev-branch
+This removes the dev-branch from the remote repository.
+Step 11: Rebase the Feature Branch onto Main
+git checkout feature-branch
+git rebase main
+This applies changes from feature-branch on top of main.
+Step 12: Rename a Branch
+Rename the current branch:
+git branch -m new-branch-dev
+Rename another branch:
+git branch -m new-branch-dev dev-branch
+
+
+
+
+
 
 
 
