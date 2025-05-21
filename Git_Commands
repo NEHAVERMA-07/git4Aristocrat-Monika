@@ -129,7 +129,9 @@ git checkout -b develop main
 2. Create a feature branch
 git checkout -b feature
 git checkout -b feature/new-ui develop
-3. Work on the feature and commit
+3. Work on the feature.txt : add a line: "Hello World" then add it to the current branch:
+git add feature.txt
+and then commit
 git commit -am "New UI implementation"
 4. Merge the feature into develop
 git checkout develop
