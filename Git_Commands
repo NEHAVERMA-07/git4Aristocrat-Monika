@@ -19,6 +19,14 @@ $ git config --list
 
 
 
+Open Power Shell as Admin:
+> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+A for Yes to all
+Close PS
+
+
+
+
 
 $ mkdir Prj1
 $ cd Prj1
