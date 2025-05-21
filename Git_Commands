@@ -286,7 +286,7 @@ Or
 git merge --no-ff feature-Mergedlogin -m "Merge branch 'feature-branch'"
 git push origin main
 3. Check log: View Graphical History (Branching & Merging) :
-git log --graph --oneline --decorate --all --branches > aa.txt
+git log --graph --oneline --decorate --all --branches > Mergeaa.txt
 
 
 Git Rebase Example
@@ -298,15 +298,8 @@ git commit -am "Added Rebased login feature"
 2. Rebase onto main:
 git checkout main
  git rebase feature-relogin
-git pull origin main
-git checkout feature-relogin
-git rebase main
-3. Push rebased changes:
-git checkout main
-git merge feature-relogin
-git push origin main
 Check log: View Graphical History  :
-git log --graph --oneline --decorate --all --branches > aa.txt
+git log --graph --oneline --decorate --all --branches > Rebaseaa.txt
 
 
 
