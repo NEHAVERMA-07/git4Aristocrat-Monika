@@ -297,6 +297,7 @@ git add relogin.js
 git commit -am "Added Rebased login feature"
 2. Rebase onto main:
 git checkout main
+ git rebase feature-relogin
 git pull origin main
 git checkout feature-relogin
 git rebase main
