@@ -78,4 +78,36 @@ git stash pop
 
 
 
+Step 1: Export Code from TFS
+Open the TFS command prompt or use Visual Studio. Navigate to the project folder:
+cd path/to/project
+Export code:
+tf get
+Step 2: Initialize a Git Repository
+Go to the project folder. Initialize a new Git repository:
+git init
+Step 3: Add Files to Git Repository 
+Stage files for commit:
+git add .
+Commit files:
+git commit -m "Initial commit from TFS"
+Step 4: Connect to Remote Git Repository
+Create a new repository on GitHub or GitLab. Add the remote repository:
+git remote remove origin
+git remote add origin <repository-url>
+git remote add origin https://github.com/monicag-gupta/gitAristrocat.git
+Push to the remote repository:
+git push origin --force HEAD:main
+Step 5: Verify Migration
+Check the repository status:
+git status
+Check the commit history:
+git log
+
+
+
+
+
+
+
 
