@@ -272,6 +272,24 @@ git log --graph --oneline --decorate --all --branches > aa.txt
 git log --graph --oneline --decorate --all --branches
 
 
+Git Merge Example
+1. Create a branch and make changes:
+git checkout -b feature-Mergedlogin
+echo "Login feature" >> mergelogin.js
+git add mergelogin.js
+git commit -am "Added merged login feature"
+2. Merge it into main:
+git checkout main
+This ensures that Git creates a merge commit, even if it could have done a fast-forward merge.
+git merge --no-ff feature-Mergedlogin
+Or
+git merge --no-ff feature-Mergedlogin -m "Merge branch 'feature-branch’"
+git push origin main
+3. Check log: View Graphical History (Branching & Merging) :
+git log --graph --oneline --decorate --all --branches > aa.txt
+
+
+
 
 
 
