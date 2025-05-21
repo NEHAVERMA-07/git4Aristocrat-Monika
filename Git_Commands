@@ -110,4 +110,22 @@ git log
 
 
 
+1. Create a new feature branch:
+git checkout -b feature-login
+2. Make changes to files:
+echo "New feature" >> feature.txt
+git add feature.txt
+git commit -m "Add login feature"
+3. Push to remote:
+git push origin feature-login
+4. Create a pull request on GitHub.
+5. Merge pull request:
+git checkout main
+git merge feature-login
+6. Delete the branch:
+git branch -d feature-login
+
+
+
+
 
