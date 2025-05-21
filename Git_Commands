@@ -132,14 +132,15 @@ git checkout -b feature/new-ui develop
 3. Work on the feature.txt : add a line: "Hello World" then add it to the current branch:
 git add feature.txt
 and then commit
-git commit -am "New UI implementation"
+git commit -m "New UI implementation"
 4. Merge the feature into develop
 git checkout develop
 git merge feature/new-ui
 git branch -d feature/new-ui
 5. Prepare a release branch
 git checkout -b release/v1.0 develop
-6. Fix bugs and merge into main
+6. Fix bugs : In feature.txt, add a line "Fixed bugs" , add it to release/v1.0, the commit it : message: "Fixed bugs" 
+and merge into main
 git checkout main
 git merge release/v1.0
 7. Tag the release
