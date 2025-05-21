@@ -16,3 +16,22 @@ Set the default branch:
 $ git config --global init.defaultbranch main
 Check the setting:
 $ git config --list
+
+
+
+
+$ mkdir Prj1
+$ cd Prj1
+Initialize Git
+$ git init
+This creates a folder .git:
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        12/4/2022   5:19 PM                hooks
+d-----        12/4/2022   5:19 PM                info
+d-----        12/4/2022   5:19 PM                objects
+d-----        12/4/2022   5:19 PM                refs
+-a----        12/4/2022   5:19 PM            130 config
+-a----        12/4/2022   5:19 PM             73 description
+-a----        12/4/2022   5:19 PM             21 HEAD
+
