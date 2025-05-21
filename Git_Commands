@@ -152,4 +152,29 @@ git merge main
 
 
 
+Here are some commonly used Git branch commands:
+1. Listing Branches
+View all branches:
+git branch
+View all branches (including remote branches):
+git branch -a
+2. Creating Branches
+Create a new branch:
+git branch <branch-name>
+Create and switch to a new branch:
+git checkout -b <branch-name>
+Create a new branch from a specific commit:
+git branch <branch-name> <commit-hash>
+3. Switching Branches
+Switch to an existing branch:
+git checkout <branch-name>
+Switch to an existing branch (Git 2.23+):
+git switch <branch-name>
+
+
+
+
+
+
+
 
