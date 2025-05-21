@@ -126,7 +126,6 @@ git branch -d feature-login
 
 1. Create develop locally from main
 git checkout -b develop main
-git push origin develop  # Push to remote if needed
 2. Create a feature branch
 git checkout -b feature
 git checkout -b feature/new-ui develop
