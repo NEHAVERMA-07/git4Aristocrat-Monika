@@ -255,10 +255,10 @@ git checkout -b dev-branch
 git push -u origin dev-branch
 This creates dev-branch locally and pushes it to the remote repository.
 Step 10: Delete a Remote Branch
-git push origin --delete dev-branch
+git push origin --delete develop
 This removes the dev-branch from the remote repository.
 Step 11: Rebase the Feature Branch onto Main
-git checkout feature-branch
+git checkout -b feature-branch
 git rebase main
 This applies changes from feature-branch on top of main.
 Step 12: Rename a Branch
@@ -266,6 +266,11 @@ Rename the current branch:
 git branch -m new-branch-dev
 Rename another branch:
 git branch -m new-branch-dev dev-branch
+
+
+git log --graph --oneline --decorate --all --branches > aa.txt
+git log --graph --oneline --decorate --all --branches
+
 
 
 
