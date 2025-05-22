@@ -678,6 +678,12 @@ git config --global --unset alias.<shortcut>
 Example:
 git config --global --unset alias.ci
 
+Example: Alias to undo the last commit:
+git config --global alias.undo "reset --soft HEAD~1"
+Usage:
+git undo
+
+
 
 
 
