@@ -70,6 +70,24 @@ let x = 10
 console.log(x)
 Missing semicolons will trigger an ESLint error.
 
+
+
+Git hooks are stored in the .git/hooks/ directory within a repository. 
+To enable a hook:
+Navigate to .git/hooks/
+Rename a sample hook (pre-commit.sample → pre-commit)
+Make it executable (chmod +x pre-commit) (attrib +x .\pre-commit)
+Add a script inside (e.g., checking code formatting)
+Example of a pre-commit hook that runs ESLint before committing:
+#!/bin/sh
+npx eslint . --fix
+if [ $? -ne 0 ]; then
+  echo "ESLint check failed. Fix the errors before committing."
+  exit 1
+fi
+
+
+
 Try Committing the File
 git add index.js
 git commit -m "Test ESLint pre-commit hook"
