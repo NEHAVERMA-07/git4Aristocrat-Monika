@@ -107,3 +107,68 @@ Dont run this:
 git push --force
 Be careful when force-pushing to shared repositories, as this can overwrite history for others.
 
+
+
+
+
+
+
+
+1. Create Multiple Commits: First, we’ll create three commits to practice rebase:
+echo "console.log('Commit 1');" > feature.js
+git add feature.js
+git commit -m "Commit 1"
+
+echo "console.log('Commit 2');" >> feature.js
+git add feature.js
+git commit -m "Commit 2"
+
+echo "console.log('Commit 3');" >> feature.js
+git add feature.js
+git commit -m "Commit 3"
+
+2. Check the status to identify the unstaged changes:
+git status
+This will show any modified or untracked files that need to be addressed before proceeding.
+Stash the changes (if you don't want to commit them yet): If you want to temporarily save the changes and proceed with the rebase, you can stash them:
+git stash
+This will store your changes temporarily and leave your working directory clean.
+Proceed with the Interactive Rebase: 
+Once your working directory is clean, you can proceed with the interactive rebase:
+git rebase -i HEAD~3
+
+3. Edit the Commit List: Your default editor will open with a list of commits:
+pick 1a2b3c4 Commit message 1
+pick 5d6e7f8 Commit message 2
+pick 9a0b1c2 Commit message 3
+You can change the command next to each commit:
+pick: Keep the commit as is.
+reword: Change the commit message.
+edit: Amend the commit (useful for changing files).
+squash: Combine this commit with the previous one.
+fixup: Similar to squash, but discards the commit message.
+drop: Remove the commit.
+For example, to squash the last two commits into one:
+pick 1a2b3c4 Commit message 1
+squash 5d6e7f8 Commit message 2
+pick 9a0b1c2 Commit message 3
+
+4. Save and Exit: 
+After making your changes, save and exit the editor (for example, in Vim, press Esc, type :wq, and hit Enter).
+5. Resolve Conflicts (If Any): 
+Resolve any conflicts (if necessary): If there are conflicts during the rebase, Git will prompt you to resolve them. 
+After resolving conflicts, use:
+git rebase --continue
+If there are conflicts during the rebase, Git will stop and allow you to resolve them. 
+After fixing the conflicts, stage the changes:
+git add <file>
+Then, continue the rebase:
+git rebase --continue
+6. Apply the Stashed Changes (if you stashed them): After completing the rebase, you can apply your stashed changes:
+git stash pop
+7. Force Push (If Needed): 
+If you've already pushed your changes, you may need to force push the rewritten history:
+git push --force
+
+
+
