@@ -313,7 +313,7 @@ This applies and removes the stash.
 
 7. Dropping and Clearing Stashes
 Drop a specific stash
-git stash drop stash@{0}
+git stash drop "stash@{0}"
 Clear all stashes
 git stash clear
 Final Cleanup
