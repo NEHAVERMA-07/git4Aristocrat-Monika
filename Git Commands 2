@@ -1,1 +1,69 @@
+Example..Steps
+
+
+Create an Initial File and Commit, Create a file called app.js and add some code:
+echo 'console.log("Hello from main branch");' > app.js
+Add and commit this file:
+git add app.js
+git commit -m "Initial commit with app.js"
+Now we have a main branch with one file.
+Create and Switch to a New Branch, Create a new branch feature-branch and switch to it:
+git checkout -b feature-branch
+Modify app.js:
+echo 'console.log("Hello from feature branch");' > app.js
+Stage and commit the changes:
+git add app.js
+git commit -m "Updated app.js in feature-branch"
+Now, we have different versions of app.js in main and feature-branch.
+
+Switch Back to Main and Modify the Same File
+Switch back to main branch:
+git checkout main
+Modify app.js:
+echo 'console.log("Hello from main branch - modified");' > app.js
+Commit the changes:
+git add app.js
+git commit -m "Updated app.js in main"
+Now, app.js is different in both main and feature-branch.
+Merge feature-branch into main, Try merging the feature-branch:
+git merge feature-branch
+Git Conflict Detected!
+You’ll see:
+warning: Cannot merge binary files: app.js (HEAD vs. feature-branch)
+Auto-merging app.js
+CONFLICT (content): Merge conflict in app.js
+Automatic merge failed; fix conflicts and then commit the result..
+
+Check the Conflict
+git status
+On branch main
+….Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   app.js
+…..
+Open app.js and you’ll see: (VS Code provides an intuitive interface to compare and resolve conflicts.)
+Resolve the Conflict
+Now, manually edit app.js and keep the correct version:
+Final app.js (Resolved)
+console.log("Hello from main branch - modified");
+console.log("Hello from feature branch");
+Mark Conflict as Resolved
+
+Now, stage the file:
+git add app.js
+Commit the merge:
+git commit -m "Resolved merge conflict in app.js"
+Conflict is now resolved!
+
+Verify Merge History
+Check the log:
+git log --oneline --graph --all > aa.txt
+This confirms the successful merge.
+
+Alternative: Abort the Merge
+If you want to cancel and undo the merge, run:
+git merge --abort
+This resets the repository back to before the merge.
+
+
 
