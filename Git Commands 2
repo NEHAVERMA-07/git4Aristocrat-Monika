@@ -656,6 +656,22 @@ git checkout -b release-2.0 v2.0
 
 
 
+Creating Aliases
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.hist "log --oneline --graph --all"
+Now, you can use:
+git co main   # Instead of git checkout main
+git br        # Instead of git branch
+git ci -m "Updated code"  # Instead of git commit -m "Updated code"
+git hist      # Instead of a long log command
+
+
+
+
+
 
 
 
