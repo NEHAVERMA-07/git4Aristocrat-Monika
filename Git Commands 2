@@ -668,6 +668,15 @@ git br        # Instead of git branch
 git ci -m "Updated code"  # Instead of git commit -m "Updated code"
 git hist      # Instead of a long log command
 
+Listing All Aliases
+To see all configured aliases:
+git config --global --list | grep alias
+git config --global --list | Select-String "alias"
+Removing an Alias
+To delete an alias:
+git config --global --unset alias.<shortcut>
+Example:
+git config --global --unset alias.ci
 
 
 
