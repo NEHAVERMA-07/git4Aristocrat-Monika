@@ -107,3 +107,27 @@ Fix the issues, then retry the commit.
 
 
 
+pre-commit Hook (Linting before Commit)
+#!/bin/sh
+echo "Running ESLint before commit..."
+
+# Run ESLint on all staged JS files
+git diff --cached --name-only --diff-filter=ACM | grep '\.js$' | xargs npx eslint
+
+if [ $? -ne 0 ]; then
+  echo "❌ ESLint found issues. Fix them before committing."
+  exit 1
+fi
+
+echo "✅ ESLint checks passed!"
+exit 0
+
+
+
+
+
+
+
+
+
+
