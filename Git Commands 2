@@ -329,6 +329,104 @@ This creates new-feature-branch and applies the stash.
 
 
 
+Stashing Selectively (--patch):
+
+Commit all previous work:
+git add .
+git commit -m "Initial commit"
+git diff
+No output expected
+Create a file and commit it: 
+Create a new file  in VS Code: 
+example.txt
+Add lines to it:
+Line 1: Initial content
+Line 2: Stable version 
+Save the file
+git add example.txt
+git commit -m "Initial commit with example.txt"
+
+Make Changes to the File
+Modify the file: Add the lines
+Line 3: First change
+Line 4: Second change
+Save the file
+Check the changes:
+git diff
+Expected output:
+diff --git a/example.txt b/example.txt
+index fe58729..b7f45f7 100644
+--- a/example.txt
++++ b/example.txt
+@@ -1,2 +1,4 @@
+ Line 1: Initial content
+-Line 2: Stable version
+\ No newline at end of file
++Line 2: Stable version^M
++Line 3: First change^M
++Line 4: Second change
+\ No newline at end of file
+Stash Only Selected Changes
+git stash --patch
+Git will interactively ask you about each change:
+diff --git a/example.txt b/example.txt
+..
+\ No newline at end of file
+(1/1) Stash this hunk [y,n,q,a,d,e,p,?]?
+Here’s a breakdown of what each option does:
+y: Yes – Stash the current hunk of changes (accept the changes).
+n: No – Do not stash the current hunk of changes (skip this hunk).
+q: Quit – Exit the stashing process and don't stash any changes.
+a: All – Stash all the changes in the file (i.e., all hunks). This will automatically accept all changes in the file.
+d: Done – Stop stashing after the current hunk. This can be used when you've finished selecting which hunks to stash.
+e: Edit – Open the current hunk in an editor to modify what changes will be stashed. You can manually select or remove parts of the changes.
+p: Patch – Allow you to interactively select specific lines to stash. This will let you decide which specific lines from the current hunk to keep.
+For this example, press y to stash only the first hunk.
+Output:
+Saved working directory and index state WIP on main: 2f131e6 Initial commit with example.txt
+Check the stash list:
+git stash list
+Confirm only selected changes were stashed.
+stash@{0}: WIP on main: 2f131e6 Initial commit with example.txt
+Confirm the file status:
+git status
+Output:
+PS C:\Users\monica\Desktop\Egs\GitEgs111> git status
+On branch main
+Your branch is ahead of 'origin/main' by 14 commits.
+  (use "git push" to publish your local commits)
+nothing to commit, working tree clean
+Check the remaining unstashed changes:
+git diff
+Output: nothing
+Apply or Pop the Stash
+Apply the stash (keep it in the stash list):
+git stash apply
+Apply and remove the stash from the list:
+git stash pop
+Clean Up
+If you no longer need the stash:
+In Linux:
+git stash drop stash@{0}
+In Windows Power Shell:
+git stash drop stash@`{0`}
+To remove all stashes:
+git stash clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
