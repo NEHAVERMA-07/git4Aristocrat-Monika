@@ -430,6 +430,21 @@ Saved working directory and index state On main: Stashing only myfile.txt
 
 
 
+Check What Will Be Removed (Dry Run)
+Before removing anything, it's a good practice to preview what will be deleted:
+git clean -n
+This lists the untracked files that would be deleted without actually deleting them.
+Remove Untracked Files
+To actually delete untracked files:
+git clean -f
+-f (force) is required to actually delete the files.
+Remove Untracked Directories
+If you also want to remove untracked directories (folders), use:
+git clean -fd
+-d removes untracked directories.
+
+
+
 
 
 
