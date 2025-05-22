@@ -486,6 +486,100 @@ git clean -fdx
 This will remove everything that is not tracked by Git.
 
 
+Cherry-picking allows you to apply a specific commit from one branch to another without merging the entire branch
+
+If the commit being cherry-picked conflicts with existing changes in the branch, Git will pause and indicate the conflicts.
+Steps to resolve conflicts:
+1. Check conflicting files:
+git status
+2. Manually resolve conflicts in the files.
+3. Mark as resolved and continue cherry-picking:
+git add <resolved-file>
+git cherry-pick --continue
+4. If you want to abort the cherry-pick:
+git cherry-pick --abort
+
+
+Example: Git Cherry-Picking
+Say we have two branches:
+bugfix-branch – Contains commits that introduce a bug fix.
+main – The primary branch where only selected commits should be added.
+
+1. Create and Switch to a Bugfix Branch
+git checkout -b bugfix-branch
+Switched to a new branch 'bugfix-branch'
+Now, create a few commits in the bugfix-branch:
+echo "New Feature A" > featureA.txt
+git add featureA.txt
+git commit -m "Added New Feature A"
+
+echo "New Feature B" > featureB.txt
+git add featureB.txt
+git commit -m "Added New Feature B"
+
+echo "Critical Bug Fix" > bugfix.txt
+git add bugfix.txt
+git commit -m "Fixed a critical bug"
+
+Now, bugfix-branch has three commits.
+
+
+2. Switch to the main Branch
+git checkout main
+At this point, main does not have the commits from bugfix-branch.
+
+3. List the Commit History
+To find the commit hashes:
+git log --oneline --graph --all
+Example output:
+* eae42a4 (bugfix-branch) Fixed a critical bug
+* 1e257cf Added New Feature B
+* ae60826 Added New Feature A
+..
+* 449394e (HEAD -> main) Initial commit with myfile.txt
+..
+We want to cherry-pick only the "Fixed a critical bug" commit (eae42a4).
+
+4. Cherry-Picking a Specific Commit
+git cherry-pick a371325
+This applies the commit "Fixed a critical bug" to the main branch.
+5. Resolve Conflicts (If Any)
+If there's a conflict, Git will pause the process and show a message:
+error: conflict in bugfix.txt
+To resolve:
+i. Open the conflicting file (bugfix.txt) and manually fix the conflict.
+ii. Mark the conflict as resolved:
+git add bugfix.txt
+iii. Continue the cherry-pick:
+git cherry-pick --continue
+iv. To abort the cherry-pick:
+git cherry-pick --abort
+
+6. Verify the Cherry-Pick
+Check the commit history:
+git log --oneline --graph --all
+Expected output:
+* a472f86 (HEAD -> main) Fixed a critical bug
+| * eae42a4 (bugfix-branch) Fixed a critical bug
+| * 1e257cf Added New Feature B
+..
+* 449394e Initial commit with myfile.txt
+..
+Only the "Fixed a critical bug" commit was applied, leaving out the other feature commits.
+Step 7: Push the Changes to Remote (Optional)
+If you want to push the changes to the remote repository:
+git push origin main
+
+
+
+
+
+
+
+
+
+
+
 
 
 
