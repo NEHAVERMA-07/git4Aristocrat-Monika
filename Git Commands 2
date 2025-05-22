@@ -16,6 +16,41 @@ git add app.js
 git commit -m "Updated app.js in feature-branch"
 Now, we have different versions of app.js in main and feature-branch.
 
+
+
+
+git commit --amend (Amending the Last Commit)
+Steps to Amend the Last Commit:
+1. Create and Commit feature.js:
+echo "console.log('Initial commit');" > feature.js
+git add feature.js
+git commit -m "Initial commit with feature.js"
+Modify the Commit Message or Content: 
+Let's say we realize that the commit message is incorrect or we forgot to add some changes. We want to amend it.
+Modify the files you want to change.
+For example, edit a file or add new content:
+echo "console.log('Updated feature')" >> feature.js
+2. Stage the changes:
+git add feature.js
+3. Amend the last commit:
+To set Visual Studio Code (VS Code) as your default Git editor, you can use the following command:
+git config --global core.editor "code --wait"
+Open amend of commit in VS code
+git commit --amend
+This will open your default text editor, allowing you to change the commit message if needed. The changes you made will now be part of the amended commit.
+If you just want to change the commit message (without modifying the content), you can use:
+git commit --amend --no-edit
+The --no-edit flag keeps the commit message unchanged.
+4. Push the changes (if the commit has already been pushed to a remote): 
+If you've already pushed the original commit, you'll need to force push:
+Dont run this:
+git push --force
+Be careful when force-pushing to shared repositories, as this can overwrite history for others.
+
+
+
+
+
 Switch Back to Main and Modify the Same File
 Switch back to main branch:
 git checkout main
