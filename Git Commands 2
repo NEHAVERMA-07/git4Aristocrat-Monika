@@ -458,6 +458,38 @@ This will give you options like deleting specific files, skipping some, etc.
 
 
 
+Create Some Files
+echo "Tracked file" > tracked1.txt
+echo "Untracked file" > untracked1.txt
+mkdir temp-folder
+echo "Ignored file" > temp-folder/ignored.txt
+echo "temp-folder/" > .gitignore
+Add and Commit the Tracked File
+git add tracked1.txt .gitignore
+git commit -m "Initial commit with tracked1.txt and .gitignore"
+Check Status
+git status
+You will see untracked1.txt and temp-folder/ as untracked.
+Remove Untracked Files
+git clean -f
+This removes untracked1.txt, but not temp-folder/.
+Output: Removing untracked1.txt
+Remove Untracked Directories
+git clean -fd
+Now, temp-folder/ is also deleted.
+Output: Removing temp-folder/
+Remove Ignored Files
+git clean -fX
+This removes only files that match .gitignore, leaving other untracked files.
+Remove Everything (Untracked + Ignored)
+git clean -fdx
+This will remove everything that is not tracked by Git.
+
+
+
+
+
+
 
 
 
