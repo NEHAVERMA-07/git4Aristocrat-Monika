@@ -141,6 +141,8 @@ git rebase -i HEAD~3
 pick 1a2b3c4 Commit message 1
 pick 5d6e7f8 Commit message 2
 pick 9a0b1c2 Commit message 3
+
+
 You can change the command next to each commit:
 pick: Keep the commit as is.
 reword: Change the commit message.
@@ -148,6 +150,8 @@ edit: Amend the commit (useful for changing files).
 squash: Combine this commit with the previous one.
 fixup: Similar to squash, but discards the commit message.
 drop: Remove the commit.
+
+
 For example, to squash the last two commits into one:
 pick 1a2b3c4 Commit message 1
 squash 5d6e7f8 Commit message 2
@@ -169,6 +173,83 @@ git stash pop
 7. Force Push (If Needed): 
 If you've already pushed your changes, you may need to force push the rewritten history:
 git push --force
+
+
+
+
+
+
+
+
+Sometimes, you may accidentally lose a commit or move the branch reference to an unintended commit. 
+git reflog allows you to view and recover these lost commits.
+Steps to Recover Lost Commits:
+1. Create Commits:
+Create the first commit
+echo "console.log('Initial commit');" > feature1.js
+git add feature1.js
+git commit -m "Initial commit"
+Create a second commit
+echo "console.log('Second commit');" >> feature1.js
+git add feature1.js
+git commit -m "Second commit"
+Create a third commit
+echo "console.log('Third commit');" >> feature1.js
+git add feature1.js
+git commit -m "Third commit"
+
+2. View the Commit History
+Before we simulate a lost commit, let's check the commit history:
+git log --oneline
+Output (example commit hashes will differ):
+3024c8a (HEAD -> main) Third commit
+631218a Second commit
+8a9a2ce Initial commit
+…
+3. Delete (Lose) the Latest Commit
+Now, let’s assume we mistakenly reset to an earlier commit, losing the latest commit.
+git reset --hard HEAD~1
+HEAD is now at 631218a Second commit
+This will remove the latest commit (Third commit) from the history.
+Check the commit log again:
+git log --oneline
+Output:
+631218a (HEAD -> main) Second commit
+8a9a2ce Initial commit
+..
+The "Third commit" is gone from the history!
+
+Steps to Recover Lost Commits:
+4. View the Reflog: Recover the Lost Commit using git reflog
+At this point, Git still tracks where HEAD has moved in the past, and we can use git reflog to find the lost commit.
+The git reflog command shows the history of changes to the HEAD reference, including commits that were removed, rebased, or reset.
+git reflog
+Output (example commit hashes will differ):
+631218a (HEAD -> main) HEAD@{0}: reset: moving to HEAD~1
+3024c8a HEAD@{1}: commit: Third commit
+631218a (HEAD -> main) HEAD@{2}: commit: Second commit
+8a9a2ce HEAD@{3}: commit: Initial commit 
+..
+The commit 3024c8a (Third commit) is still accessible via reflog.
+5. Find the Commit: 
+Look through the reflog output for the commit you want to recover. 
+Note the commit hash (e.g., 3024c8a).
+6. To restore it, simply run:
+git reset --hard 3024c8a
+HEAD is now at 3024c8a Third commit
+
+7. Verify the Recovery
+Check the log again:
+git log --oneline
+Output:
+3024c8a (HEAD -> main) Third commit
+631218a Second commit
+8a9a2ce Initial commit 
+..
+The "Third commit" has been recovered successfully!
+
+
+
 
 
 
