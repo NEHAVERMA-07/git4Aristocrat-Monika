@@ -443,6 +443,23 @@ If you also want to remove untracked directories (folders), use:
 git clean -fd
 -d removes untracked directories.
 
+Remove Ignored Files
+If you want to remove only ignored files (files listed in .gitignore):
+git clean -fX
+-X removes only ignored files.
+Remove Ignored and Untracked Files
+To remove both ignored and untracked files, use:
+git clean -fdx
+-x removes all untracked files, including those ignored by .gitignore.
+Interactive Mode
+If you want to review and confirm each file before deletion:
+git clean -i
+This will give you options like deleting specific files, skipping some, etc.
+
+
+
+
+
 
 
 
