@@ -82,7 +82,8 @@ Example of a pre-commit hook that runs ESLint before committing:
 
 
 #!/bin/sh
-npx eslint . --fix
+# npx eslint . --fix
+npx eslint .
 if [ $? -ne 0 ]; then
   echo "ESLint check failed. Fix the errors before committing."
   exit 1
