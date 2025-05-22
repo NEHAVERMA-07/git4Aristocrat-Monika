@@ -79,6 +79,8 @@ Rename a sample hook (pre-commit.sample → pre-commit)
 Make it executable (chmod +x pre-commit) (attrib +x .\pre-commit)
 Add a script inside (e.g., checking code formatting)
 Example of a pre-commit hook that runs ESLint before committing:
+
+
 #!/bin/sh
 npx eslint . --fix
 if [ $? -ne 0 ]; then
