@@ -572,6 +572,96 @@ git push origin main
 
 
 
+Example: Git Tags: Lightweight vs. Annotated
+
+1. Create a New Repository (or Use an Existing One)
+If you don’t have a repository, create one:
+git checkout -b git-tag-demo
+
+Create a file and make some commits:
+
+echo "Version 1" > version.txt
+git add version.txt
+git commit -m "Initial commit - Version 1"
+
+echo "Version 2" > version.txt
+git add version.txt
+git commit -m "Update to Version 2"
+
+echo "Version 3" > version.txt
+git add version.txt
+git commit -m "Update to Version 3"
+
+
+2. Create a Lightweight Tag
+A lightweight tag is just a pointer to a commit.
+git tag v1.0
+Check the tag:
+git show v1.0
+This will display the commit associated with v1.0.
+3. Create an Annotated Tag
+Annotated tags store additional metadata like the author's name, email, date, and a message.
+git tag -a v2.0 -m "Release version 2.0"
+View the tag details:
+git show v2.0
+You will see the tag message and commit details.
+
+Listing and Deleting Tags
+List all tags:
+git tag
+Delete a local tag:
+git tag -d v1.0.0
+Delete a remote tag:
+git push origin --delete tag v1.0.0
+Pushing Tags to Remote Repository
+git push origin v1.0.0
+To push all tags:
+git push --tags
+
+
+4. List All Tags
+git tag
+This lists all tags in the repository.
+To filter tags by a pattern (e.g., v1.x):
+git tag -l "v1.*"
+
+5. Push Tags to a Remote Repository
+By default, Git does not push tags when using git push. You must explicitly push them:
+git push origin v2.0
+To push all tags:
+git push --tags
+
+6. Delete a Tag
+To delete a local tag:
+git tag -d v1.0
+To delete a remote tag:
+git push --delete origin v1.0
+
+
+Tags are widely used for versioning software releases. After tagging a release, you can:
+Create a release branch from a tag:
+git checkout -b release-1.0 v1.0.0
+Check out a specific version of the project:
+git checkout v1.0.0
+Generate release archives:
+git archive --format=zip --output=v1.0.0.zip v1.0.0
+
+7. Checkout a Specific Tag (Create a Detached HEAD)
+If you want to check out a previous version:
+git checkout v2.0
+Note: This puts you in a detached HEAD state, meaning any new commits won’t be part of any branch.
+To create a new branch from a tag:
+git checkout -b release-2.0 v2.0
+
+
+
+
+
+
+
+
+
+
 
 
 
