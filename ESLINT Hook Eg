@@ -65,6 +65,25 @@ export default defineConfig([
 ]);
 
 
+Create a file index.js inside current folder with an intentional ESLint error:
+let x = 10
+console.log(x)
+Missing semicolons will trigger an ESLint error.
+
+Try Committing the File
+git add index.js
+git commit -m "Test ESLint pre-commit hook"
+Expected Output:
+Running ESLint before commit...
+C:\Users\monica\Desktop\Egs\GitEgs111\index.js
+   1:11  error  Missing semicolon  semi
+…
+Fix the issues, then retry the commit.
+
+
+
+
+
 
 
 
