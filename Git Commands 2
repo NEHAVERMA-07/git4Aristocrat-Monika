@@ -414,6 +414,27 @@ To remove all stashes:
 git stash clear
 
 
+Create a New File and Commit It
+echo "Initial content" > myfile.txt
+git add myfile.txt
+git commit -m "Initial commit with myfile.txt"
+Modify the File Without Committing
+echo "New changes" >> myfile.txt
+Stash myfile.txt
+git stash push -m "Stashing only myfile.txt" -- myfile.txt
+The -m option gives the stash a message.
+The -- myfile.txt ensures only this file is stashed.
+Output
+Saved working directory and index state On main: Stashing only myfile.txt
+
+
+
+
+
+
+
+
+
 
 
 
