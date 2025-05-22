@@ -226,7 +226,7 @@ The git reflog command shows the history of changes to the HEAD reference, inclu
 git reflog
 Output (example commit hashes will differ):
 631218a (HEAD -> main) HEAD@{0}: reset: moving to HEAD~1
-3024c8a HEAD@{1}: commit: Third commit
+e911ea1 HEAD@{1}: commit: Third commit
 631218a (HEAD -> main) HEAD@{2}: commit: Second commit
 8a9a2ce HEAD@{3}: commit: Initial commit 
 ..
@@ -235,7 +235,7 @@ The commit 3024c8a (Third commit) is still accessible via reflog.
 Look through the reflog output for the commit you want to recover. 
 Note the commit hash (e.g., 3024c8a).
 6. To restore it, simply run:
-git reset --hard 3024c8a
+git reset --hard e911ea1
 HEAD is now at 3024c8a Third commit
 
 7. Verify the Recovery
@@ -247,6 +247,86 @@ Output:
 8a9a2ce Initial commit 
 ..
 The "Third commit" has been recovered successfully!
+
+
+
+
+
+
+Scenario: 
+You Are Working on a Feature, but Need to Switch Branches.
+You are working on feature-branch and made some changes, but suddenly you need to switch to main to fix a bug. 
+Instead of committing your half-done work, you can use git stash.
+
+1. Create a New Repository and Initialize Git
+mkdir git-stash-demo
+cd git-stash-demo
+git init
+
+2. Create a File and Make Some Changes
+echo "First line of code" > file.txt
+git add file.txt
+git commit -m "Initial commit"
+
+echo "New feature in progress" >> file.txt
+echo "Temporary work" >> temp.txt   # This is an untracked file
+
+At this point:
+file.txt is modified.
+temp.txt is untracked.
+
+Using Git Stash Commands:
+3. Stash the Changes
+Stash only tracked files
+git stash
+Only file.txt is stashed; temp.txt remains untracked.
+Stash tracked + untracked files
+git stash -u
+Now temp.txt is also stashed.
+Note that git stash removed temp.txt (untracked file)
+To restore back the file, use:
+git stash apply "stash@{0}"
+Stash everything (tracked, untracked, ignored)
+git stash -a
+Stash with a message
+git stash push -m "Saving work on feature"
+
+4. View the Stash List
+git stash list
+stash@{0}: WIP on feature-branch: Saving work on feature
+stash@{1}: WIP on feature-branch: auto-stash
+5. Switch to Another Branch
+git checkout main
+Now you can work on fixing the bug in main.
+6. Apply Stashed Changes
+After fixing the bug, switch back to your feature branch:
+git checkout feature-branch
+Apply the latest stash (but keep it in the stash list)
+git stash apply
+Your changes are restored.
+Apply a specific stash (without removing it)
+git stash apply stash@{0}
+Pop the stash (apply and remove it)
+git stash pop
+This applies and removes the stash.
+
+
+7. Dropping and Clearing Stashes
+Drop a specific stash
+git stash drop stash@{0}
+Clear all stashes
+git stash clear
+Final Cleanup
+git stash list  # Verify if any stashes are left
+8. Restoring Individual Files
+If you only need to restore a single file from the stash:
+git checkout "stash@{0}" -- file.txt
+9. Create a New Branch from a Stash
+If your work is significant and needs its own branch:
+git stash branch new-feature-branch
+This creates new-feature-branch and applies the stash.
+
+
 
 
 
