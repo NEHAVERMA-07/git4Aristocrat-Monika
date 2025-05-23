@@ -398,6 +398,28 @@ Click "Create pull request".
 
 
 
+This is useful when contributing to multiple repositories or collaborating on forks.
+Adding and Using Multiple Remotes
+1. Check Existing Remotes
+git remote -v
+2. Add Another Remote
+git remote add team-member https://github.com/team-member/repo.git
+3. Fetch Changes from Different Remotes
+git fetch origin  # Fetch from your fork
+git fetch upstream  # Fetch from original repo
+git fetch team-member  # Fetch from teammate's repo
+4. Pull a Specific Branch from a Different Remote
+git checkout -b feature-branch team-member/feature-branch
+5. Push Changes to a Different Remote
+git push origin feature-branch
+git push team-member feature-branch
+6. Remove a Remote (if needed)
+git remote remove team-member
+
+
+
+
+
 
 
 
