@@ -66,6 +66,20 @@ If they cloned it normally (git clone), they must initialize and update submodul
 git submodule init  
 git submodule update
 
+Updating a Submodule to the Latest Version
+If library4Git has new commits, update the submodule inside gitAristocrat:
+cd libs/library
+git pull origin main
+Then, commit the updated submodule reference in gitAristocrat:
+cd ../..
+git add libs/library
+git commit -m "Updated library4Git to the latest version"
+
+Updating All Submodules in the Repository
+To update all submodules at once:
+git submodule update --remote
+This fetches the latest commits from the tracked branch of each submodule.
+
 
 
 
