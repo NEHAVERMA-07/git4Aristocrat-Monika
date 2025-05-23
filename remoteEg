@@ -68,6 +68,62 @@ Push local main branch to remote dev branch.
 
 
 
+Example:
+git push -u origin main
+Enumerating objects: 9, done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (8/8), 880 bytes | 6.00 KiB/s, done.
+Total 8 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/monicag-gupta/NewRepoAris.git
+   b1a7a42..72e0d42  main -> main
+branch 'main' set up to track 'origin/main'.
+
+Now update files..
+git add .
+git commit -m "Initial commit"
+[main a7c2820] Initial commit
+ 2 files changed, 23 insertions(+)
+git push --dry-run
+To https://github.com/monicag-gupta/NewRepoAris.git
+   72e0d42..a7c2820  main -> main
+git push
+
+
+git clone
+Creates a local copy of a remote repository (including all branches, commits, tags, etc.).
+It’s used once to get the entire repo for the first time.
+Example:
+git clone https://github.com/monicag-gupta/NewRepoAris.git
+Result:
+A new directory is created.
+The full repo history and files are downloaded.
+origin is automatically set as the remote.
+Note that:
+clone = Downloading a full app for the first time.
+pull = Updating that app with the latest patch.
+Note :
+[GitHub repo] ==== clone ====> [Your computer]
+[GitHub repo] ====> pull ====> [Your computer]
+[Your computer] ====> push ====> [GitHub repo]
+
+
+
+git fetch Syntax
+git fetch [<options>] [<remote> [<refspec>...]]
+Fetch from origin
+git fetch origin
+Downloads new commits from origin/main
+Stores them in your local repo
+DOES NOT change your working files or branches
+Good for reviewing changes before merging
+Fetch all remotes
+git fetch --all
+
+
+
+
+
 
 
 
