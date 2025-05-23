@@ -30,3 +30,22 @@ git pull origin main --allow-unrelated-histories
 Used when combining projects from different sources.
 
 
+Basic git push Command
+git push
+Pushes your committed changes to the default remote (origin) and the current branch.
+Push and set upstream:
+git push -u origin main
+-u or --set-upstream: Sets the default remote tracking for your branch.
+Force push 
+Overwrite remote:
+git push --force origin main
+--force will overwrite the remote branch no matter what — dangerous in shared repos.
+Safer force push:
+git push --force-with-lease origin main
+--force-with-lease ensures:
+You only overwrite the remote branch if it hasn’t changed since your last fetch.
+If someone else pushed to origin/main after you last fetched, your push will be rejected — to avoid accidentally wiping their changes.
+
+
+
+
