@@ -651,6 +651,13 @@ git rm --cached *.zip
 git commit -m "Stop tracking zip files"
 
 
+1) Use .gitignore to exclude unnecessary files.
+2) Avoid committing large binaries, use external storage or Git LFS.
+3) Regularly prune remote-tracking branches:
+git remote prune origin
+4) Compress and clean up history:
+git gc --aggressive --prune=now
+These strategies will help optimize performance when dealing with large repositories.
 
 
 
