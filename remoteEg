@@ -138,6 +138,33 @@ Fetch from all remotes, clean up old branches, and show detailed output.
 
 
 
+Fetch changes from origin
+git fetch origin
+Downloads updates from origin/main (the GitHub version of main)
+But does not merge them into your local main yet
+Compare local and remote
+git log HEAD..origin/main --oneline
+This shows the commits on origin/main that you don’t have locally yet.
+Merge if you’re ready
+git merge origin/main
+Or just use:
+git pull origin main
+...if you’re okay with fetching + merging together.
+Bonus Example with All-in-One
+git fetch --all --prune --verbose
+Fetches updates from all remotes
+Removes stale references to deleted remote branches
+Shows verbose output
+
+
+
+git fetch = Download new mail, but don’t open it
+git pull = Download + open + merge it into your current doc
+
+
+
+
+
 
 
 
