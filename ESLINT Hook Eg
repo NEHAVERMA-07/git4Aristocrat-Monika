@@ -128,6 +128,119 @@ exit 0
 
 
 
+The commit-msg hook ensures that the commit message follows a specific format, such as including a Jira ticket ID.
+Steps:
+1. Create a commit-msg file in the .git/hooks/ directory (rename commit-msg.sample to commit-msg).
+2. Add the following script to ensure commit messages start with a ticket ID:
+#!/bin/sh
+echo "Checking commit message format..."
+# Check if the commit message starts with a Jira ticket (e.g., ABC-123)
+if ! grep -qE '^[A-Z]+-[0-9]+:' "$1"; then
+  echo "Error: Commit message must start with a ticket ID (e.g., ABC-123: Fix issue)"
+  exit 1
+fi
+3. Make it executable:
+chmod +x commit-msg
+Now, commits that don't start with a Jira ticket ID will be rejected.
+
+
+
+
+
+The pre-push hook is triggered before changes are pushed to a remote repository. You can use this hook to run tests and prevent pushing if they fail.
+Steps:
+1. Create a pre-push file in the .git/hooks/ directory (rename pre-push.sample to pre-push).
+2. Add the following script to run tests:
+#!/bin/sh
+echo "Running tests before push..."
+# Run tests
+npm test
+# If tests fail (exit code not 0), prevent push
+if [ $? -ne 0 ]; then
+  echo "Tests failed. Push canceled."
+  exit 1
+fi
+3. Make it executable:
+chmod +x pre-push
+Now, if the tests fail, the pre-push hook will prevent the push.
+
+
+
+
+Open Power Shell as Admin:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+A for Yes to all
+Close PS
+Go to the project folder: 
+Initialize Git:
+git init
+Initialize a Node.js Project
+npm init -y
+Install ESLint
+npm install eslint --save-dev
+Set Up ESLint Configuration
+npx eslint --init
+
+
+
+For ESLint activation: Edit:eslint.config.mjs:
+
+// import { defineConfig } from "eslint/config";
+// import globals from "globals";
+// import js from "@eslint/js";
+
+
+// export default defineConfig([
+//   { files: ["**/*.{js,mjs,cjs}"] },
+//   { files: ["**/*.{js,mjs,cjs}"], languageOptions: { globals: globals.browser } },
+//   { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"] },
+// ]);
+
+
+
+
+import { defineConfig } from "eslint/config";
+import js from "@eslint/js"; 
+import globals from "globals";
+
+export default defineConfig([
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    languageOptions: { 
+      globals: globals.browser 
+    },
+    rules: {
+      //"no-console": "error",
+      "semi": ["error", "always"],
+      //"quotes": ["error", "double"]
+    },
+    extends: [js.configs.recommended] // Correct way to extend rules
+  }
+]);
+
+
+
+Install Husky as a development dependency:
+npm install husky --save-dev
+Enable Husky in the project:
+npx husky init
+Open package.json File
+In your project folder, open package.json and look for the scripts section.
+Add the prepare Script
+If it's missing, add the following under the "scripts" section of your package.json:
+"scripts": {
+  "prepare": "husky"
+}
+Now run the following command again:
+npm run prepare
+✅ This ensures Husky is set up whenever dependencies are installed.
+
+
+
+
+
+
+
 
 
 
