@@ -421,6 +421,32 @@ git remote remove team-member
 
 
 
+Example: Shallow Clone
+
+Step 1: Pick a repo to clone
+Let’s use a public repo (you can replace with your own):
+git clone --depth 1 https://github.com/jquery/jquery.git
+Clone only the latest commit of the jquery repo
+Skip all previous history
+Save disk space and clone time
+Step 2: Check the clone depth
+After cloning, run:
+cd jquery
+git log --oneline
+de2ecfc (grafted, HEAD -> main, origin/main, origin/HEAD) Build: Bump the github-actions group with 3 updates
+You’ll only see 1 commit.
+Step 3: Try fetching more history (optional)
+Let’s say now you want to deepen the clone to see the last 10 commits:
+git fetch --deepen=9
+This adds 9 more commits, making it a total of 10.
+Step 4: Full unshallow fetch (optional)
+If you now want the entire history, run:
+git fetch --unshallow
+Now your shallow clone becomes a full clone.
+
+
+
+
 
 
 
