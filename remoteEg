@@ -120,6 +120,25 @@ Good for reviewing changes before merging
 Fetch all remotes
 git fetch --all
 
+Fetch and clean up stale branches
+git fetch --prune
+Simulate a fetch
+git fetch --dry-run
+Fetch tags only
+git fetch --tags
+Fetch with full details
+git fetch --verbose
+Shallow fetch (last 5 commits)
+git fetch --depth 5
+Combine Options
+git fetch --all --prune --verbose
+Fetch from all remotes, clean up old branches, and show detailed output.
+
+
+
+
+
+
 
 
 
