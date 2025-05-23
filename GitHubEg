@@ -114,7 +114,7 @@ mkdir MyWebProject
 cd MyWebProject
 2. Initialize Git and Set Remote Origin
 git init
-git remote add origin https://github.com/monicag-gupta/Repo4Yml.git
+git remote add origin https://github.com/monicag-gupta/Prj1.git
 3. Create Project Files:
 index.html
 style.css
