@@ -241,12 +241,22 @@ npm run prepare
 If you haven’t already added a pre-commit hook, do it now:
 npx husky add .husky/pre-commit "echo '✅ Husky Pre-Commit Hook Triggered!'"
 OR Add the code to pre-commit in .husky/_/pre-commit:
+# echo '? Husky Pre-Commit Hook Triggered!'
+#!/usr/bin/env sh
 echo '? Husky Pre-Commit Hook Triggered!'
+# . "$(dirname "$0")/h"
+npx eslint .
+
+
+
+
+
 git add .husky/_/pre-commit
 git add .\.husky\_\pre-commit
 2. Create a Test File
 Create a simple JavaScript file:
 echo "console.log('Hello World');" > test.js
+
 3. Try Committing
 git add .
 git commit -m "Testing Husky"
