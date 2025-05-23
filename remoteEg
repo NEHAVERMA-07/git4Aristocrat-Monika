@@ -193,6 +193,100 @@ If a patch was applied incorrectly, you can revert it:
 git apply -R 0001-fix-bug.patch
 
 
+Example: Patches in Git 
+
+Say, we have made some changes in a repository and want to share those changes as a patch instead of pushing them to a remote repository. 
+A patch is a file that contains differences between versions of files and can be applied later to reproduce the same changes.
+
+1. Create a sample file and commit it:
+Add example4patch.txt through VS Code. Add the content:
+Hello, Git Patches!
+Save the file
+git add example4patch.txt
+git commit -m "Initial commit with example4patch.txt"
+git push origin main
+
+
+
+For Applying a Patch in Another Repository
+Let’s assume you have another repository where you want to apply this patch.
+Create a second repository:
+cd ..
+mkdir GitEgs112
+cd GitEgs112
+git init
+create the example4patch.txt file like first repository in the second repository.
+
+git add example4patch.txt
+git commit -m "Added empty example4patch.txt before applying the patch"
+
+
+
+
+
+Go back to Original Repository
+cd ..\GitEgs111
+Make Changes and Generate a Patch
+Now, modify the file and create a patch:
+Now, modify example4patch.txt:
+Hello, Git Patches!
+This is an updated line in example4patch.txt.
+Save the file
+git add example4patch.txt
+git commit -m "Updated example4patch.txt with a new line"
+Generate a patch file:
+git format-patch -1 HEAD
+This creates a patch file named something like 0001-Updated-example4patch.txt-with-a-new-line.patch.
+The -1 flag means generating a patch for the last commit.
+Example:
+git format-patch -1 HEAD --stdout > 0001-Updated-example4patch.txt.patch
+To generate patches for the last three commits, use:
+git format-patch -3 HEAD
+
+
+
+Apply a Patch in Another Repository
+Go to the second repository:
+cd ..\GitEgs112
+
+Copy the patch file into this repository and apply it:
+cp ../ GitEgs111/0001-Updated-example4patch.txt-with-a-new-line.patch .
+copy ..\GitEgs111\0001-Updated-example4patch.txt.patch .
+git apply 0001-Updated-example4patch.txt.patch
+Check if the changes were applied:
+cat example4patch.txt
+Output:
+Hello, Git Patches!
+This is an updated line in example4patch.txt
+
+
+
+
+Applying a Patch with git am (Preserving Commit History)
+Go to the second repository:
+cd ..\GitEgs112
+Instead of git apply, you can use git am to preserve commit history:
+git am < 0001-Updated-example4patch.txt.patch
+This creates a new commit with the original commit message from the patch.
+Check if the changes were applied:
+cat example4patch.txt
+Output:
+Hello, Git Patches!
+This is an updated line in example4patch.txt
+
+
+Undoing an Applied Patch
+If you applied the patch incorrectly, you can revert the changes:
+git apply -R 0001-Updated-example4patch.txt.patch
+
+git am –abort : This will clear any failed patch attempts and reset git am so you can try again.
+git am --abort
+
+
+
+
+
+
 
 
 
