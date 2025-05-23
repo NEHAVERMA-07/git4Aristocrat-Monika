@@ -48,4 +48,22 @@ If someone else pushed to origin/main after you last fetched, your push will be 
 
 
 
+Delete a remote branch:
+git push origin --delete feature-branch
+Push tags:
+git push origin --tags
+Dry-run (just to test):
+git push --dry-run
+It tells you what would happen — like pushing the main branch — but nothing is actually pushed.
+Check Current Upstream Tracking
+git branch -vv
+is super useful — it shows all local branches along with:
+The tracking remote branch (if any)
+The last commit hash
+The latest commit message
+Whether the branch is ahead/behind its remote
+
+
+
+
 
