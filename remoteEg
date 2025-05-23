@@ -446,6 +446,66 @@ Now your shallow clone becomes a full clone.
 
 
 
+Sparse checkout allows you to work with only specific directories or files instead of the entire repository.
+Sparse checkout allows you to checkout only a subset of files/folders in a Git repository, saving time, disk space, and bandwidth.
+Use Case:
+You want only a subset of files from a large repository.
+You need to work on specific directories without downloading everything.
+Commands:
+Enable sparse checkout:
+git sparse-checkout init
+Define the directories you need:
+git sparse-checkout set src/docs
+Pull only the selected directories:
+git pull origin main
+
+
+
+Go to your base folder
+git init
+Clone the repo with no checkout (only metadata)
+git clone --filter=blob:none --no-checkout https://github.com/github/gitignore.git
+--filter=blob:none:
+Prevents Git from downloading file contents (blobs) initially — only tree and commit metadata are fetched. This keeps the clone lightweight.
+--no-checkout:
+Tells Git not to checkout any files into your working directory yet. This is useful when you're about to use sparse checkout.
+At this point:
+You have a local copy of the repo metadata
+No files are visible in the working directory (yet)
+You're ready to selectively pull files using sparse checkout!
+Go into the directory
+cd gitignore
+
+
+
+
+Enable sparse checkout in simple “no cone mode”
+git sparse-checkout init --no-cone
+Use manual mode (non-cone mode)
+This is the most accurate way to get individual files
+--no-cone puts Git into manual sparse mode, allowing file-level control
+cat .git/info/sparse-checkout
+/*
+!/*/
+Verify Sparse Checkout Mode
+git config core.sparseCheckoutCone
+false
+Select specific files to checkout
+.git/info/sparse-checkout with direct file paths (no trailing slash) tells Git to include exactly those files
+echo -e "/Python.gitignore\n/Node.gitignore" > .git/info/sparse-checkout
+Or Edit .git/info/sparse-checkout in VS code and add:
+/Python.gitignore
+/Node.gitignore
+cat .git/info/sparse-checkout
+/Python.gitignore
+/Node.gitignore
+
+
+
+
+
+
+
 
 
 
