@@ -63,6 +63,11 @@ The last commit hash
 The latest commit message
 Whether the branch is ahead/behind its remote
 
+git push origin main:dev
+Push local main branch to remote dev branch.
+
+
+
 
 
 
