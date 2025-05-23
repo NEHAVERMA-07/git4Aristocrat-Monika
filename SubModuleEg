@@ -15,6 +15,16 @@ Example:
 git clone --recurse-submodules https://github.com/monicag-gupta/library4Git.git
 
 
+Removing a Submodule (Optional)
+If you no longer need a submodule:
+git submodule deinit -f libs/library
+rm -rf .git/modules/libs/library
+git rm -f libs/library
+git commit -m "Removed library4Git submodule"
+
+
+
+
 
 Updating a Submodule
 If the external repository has updates, you can update your submodule:
