@@ -181,6 +181,24 @@ git format-patch abc123..def456
 This generates patches for commits between abc123 and def456.
 
 
+Applying a Patch (git apply)
+To apply a patch file:
+git apply 0001-fix-bug.patch
+This applies the patch without committing the changes.
+Applying a Patch with History (git am)
+If you want to apply a patch and retain commit history, use:
+git am < 0001-fix-bug.patch
+Reverting a Patch
+If a patch was applied incorrectly, you can revert it:
+git apply -R 0001-fix-bug.patch
+
+
+
+
+
+
+
+
 
 
 
