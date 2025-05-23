@@ -165,6 +165,23 @@ git pull = Download + open + merge it into your current doc
 
 
 
+What is a Patch?
+A Git patch is a file that contains changes from one or more commits, allowing you to share, review, and apply changes without merging branches.
+
+Creating a Patch (git format-patch)
+You can create a patch file from the last N commits using:
+git format-patch -N
+Example: Create a patch file for the last 2 commits:
+git format-patch -2
+This generates files named like 0001-fix-bug.patch.
+To create a patch from a specific commit range:
+git format-patch <start-commit>..<end-commit>
+Example:
+git format-patch abc123..def456
+This generates patches for commits between abc123 and def456.
+
+
+
 
 
 
