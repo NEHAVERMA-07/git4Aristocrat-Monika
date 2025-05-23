@@ -220,11 +220,15 @@ jobs:
 
 
 
+
+
+
+
 7. Commit and Push All Files
 git add .
 git commit -m "Initial commit with CI workflow"
 git branch -M main
-git push -u origin main
+git push --force -u origin main
 8. Check GitHub Actions
 1. Go to: https://github.com/monicag-gupta/Repo4Yml/actions
 2. See the CI for Simple JS Website workflow run automatically on push.
@@ -284,25 +288,7 @@ Each job has multiple steps, executed in order.
 
 
 
-- name: Checkout code
-  uses: actions/checkout@v3
-What it does: Clones your repo into the runner so GitHub can access your files.
-- name: List project files
-  run: ls -la
-What it does: Lists all files in your repo (helps verify what's present).
-- name: Validate HTML files
-  run: |
-    echo "Running basic HTML validation"
-    grep -r "<html>" .
-What it does: Looks for <html> tags in your files to simulate HTML validation.
-- name: Run JS syntax check
-  run: |
-    echo "Simulating JS linting"
-    grep -r "function" .
-What it does: Searches for function keyword to simulate a JavaScript syntax check.
-- name: Done!
-  run: echo "CI pipeline complete ✅"
-Final step: Prints a success message after all previous steps run.
+
 
 
 
